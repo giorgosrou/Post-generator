@@ -19,10 +19,6 @@ const PostCreate = () => {
 
     }
 
-    const onInputChange = () => {
-
-    }
-
     return (
         <div>
             <div className='form-group'>
