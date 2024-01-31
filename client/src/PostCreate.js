@@ -7,10 +7,16 @@ const PostCreate = () => {
     const [title, setTitle] = useState('');
 
     const onPostSubmit = async () => {
-        await axios.post('http://localhost:4000/posts', {
-            title
-        });
-        setTitle('');
+        if (title) {
+            await axios.post('http://localhost:4000/posts', {
+                title
+            });
+            setTitle('');
+            alert('Your post has been created!')
+        } else {
+            alert('You should create a post first and then submit it!')
+        }
+
     }
 
     const onInputChange = () => {
