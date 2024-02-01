@@ -16,7 +16,6 @@ const PostCreate = () => {
         } else {
             alert('You should create a post first and then submit it!')
         }
-
     }
 
     return (

@@ -6,10 +6,16 @@ const CommentCreate = ({postId}) => {
     const [content,setContent] = useState('');
 
     const onCommentSubmit = async() => {
-        await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
-            content
-        })
-        setContent('');
+        if(content) {
+            await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+                content
+            })
+            setContent('');
+            alert('Your comment has been created!');
+        } else {
+            alert('Please enter a comment and then submit it');
+        }
+
     };
 
     return (
