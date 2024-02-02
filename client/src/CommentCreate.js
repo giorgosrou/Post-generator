@@ -5,7 +5,8 @@ import axios from 'axios';
 const CommentCreate = ({postId}) => {
     const [content,setContent] = useState('');
 
-    const onCommentSubmit = async() => {
+    const onCommentSubmit = async(event) => {
+        event.preventDefault();
         if(content) {
             await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
                 content
@@ -15,20 +16,21 @@ const CommentCreate = ({postId}) => {
         } else {
             alert('Please enter a comment and then submit it');
         }
-
     };
 
     return (
         <div>
-            <div className='form-group'>
-                <p>New Comment</p>
-                <input 
-                    value={content} 
-                    onChange={e => setContent(e.target.value)} 
-                    className='form-control' 
-                />
-            </div>
-            <button className='btn btn-primary' onClick={onCommentSubmit}>Submit</button>
+            <form onSubmit={onCommentSubmit}>
+                <div className='form-group'>
+                    <label>New Comment</label>
+                    <input 
+                        value={content} 
+                        onChange={e => setContent(e.target.value)} 
+                        className='form-control' 
+                    />
+                </div>
+                <button className='btn btn-primary'>Submit</button>
+            </form>
         </div>
     );
 };
