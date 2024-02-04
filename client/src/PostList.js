@@ -7,7 +7,8 @@ const PostList = () => {
     const [posts,setPosts] = useState({});
 
     const fetchPosts = async() => {
-        const res = await axios.get('http://localhost:4000/posts');
+        const res = await axios.get('http://localhost:4002/posts');
+        console.log(res.data);
         setPosts(res.data);
     }
 
@@ -22,9 +23,9 @@ const PostList = () => {
                 style={{width: '30%',marginBottom: '20px'}}
                 key={post.id}
             >
-                <div className="class-body">
+                <div className="class-body" style={{ margin: '15px' }}> 
                     <h3>{post.title}</h3>
-                    <CommentList postId = {post.id}/>
+                    <CommentList comments = {post.comments}/>
                     <CommentCreate postId={post.id} />
                 </div>
             </div>

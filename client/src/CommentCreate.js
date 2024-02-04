@@ -29,7 +29,7 @@ const CommentCreate = ({postId}) => {
                         className='form-control' 
                     />
                 </div>
-                <button className='btn btn-primary'>Submit</button>
+                <button className='btn btn-primary' style={{ marginTop: '10px' }}>Submit</button>
             </form>
         </div>
     );

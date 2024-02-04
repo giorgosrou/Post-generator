@@ -8,17 +8,21 @@ const PostCreate = () => {
 
     const onPostSubmit = async (event) => {
         event.preventDefault();
-
+    
         if (title) {
-            await axios.post('http://localhost:4000/posts', {
-                title
-            });
-            setTitle('');
-            alert('Your post has been created!');
+            try {
+                const response = await axios.post('http://localhost:4000/posts', { title, });
+                setTitle('');
+                console.log('Response from server:', response.data);
+                alert('Your post has been created!');
+            } catch (error) {
+                console.error('Error creating post:', error);
+                alert('Error creating post. Please try again.'); // Handle error
+            }
         } else {
             alert('You should create a post first and then submit it!');
-        }
-    }
+        };
+    };
 
     return (
         <div>
@@ -31,10 +35,10 @@ const PostCreate = () => {
                         className='form-control' 
                     />
                 </div>
-                <button className='btn btn-primary'>Submit</button>
+                <button className='btn btn-primary' style={{ marginTop: '10px' }}>Submit</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default PostCreate;
