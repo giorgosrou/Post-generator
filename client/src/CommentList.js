@@ -2,14 +2,18 @@ import React from "react";
 
 const CommentList = ({comments}) => {
 
+    if (!comments) {
+        return null;
+    }
+
     const renderedComments = comments.map(comment => {
         return (<li key={comment.id}>{comment.content}</li>)
     });
 
-    return( 
+    return(
         <ul>
             {renderedComments}
-        </ul>  
+        </ul>
     );
 
 };

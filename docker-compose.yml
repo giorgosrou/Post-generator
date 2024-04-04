@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  website:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    # Add any additional configuration for the website service here
+
+  api-posts:
+    build:
+      context: ./posts
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./posts:/app
+    environment:
+      - NODE_ENV=development
+    # Add any additional configuration for the api-posts service here
+
+  api-comments:
+    build:
+      context: ./comments
+    ports:
+      - "4001:4001"
+    volumes:
+      - ./comments:/app
+    environment:
+      - NODE_ENV=development
+    # Add any additional configuration for the api-comments service here
+
+# Optionally, you can define volumes, networks, etc. at the end of the file if needed
